@@ -18,7 +18,7 @@ The images are installed as follows:
 
 ## Execute ros1_bridge
 
-- 1º Termianal (ROS1):
+- 1º Terminal (ROS1):
 	- source noetic -> source /root/catkin_ws/devel/setup.bash
 	- roscore
 - 2º Terminal (ROS1 + ROS2)
