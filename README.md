@@ -14,35 +14,35 @@ The images are installed as follows:
 
 - Build docker image. In folder root:
 
-	```
-	docker build -t <imageName>:<imageTag> .
+	```bash
+	$ docker build -t <imageName>:<imageTag> .
 	```
 
 - Run docker image: 
 
-	```
-	docker run -it <imageName>:<imageTag> /bin/bash
+	```bash
+	$ docker run -it <imageName>:<imageTag> /bin/bash
 	```
 
 ## Execute ros1_bridge
 
 - 1º Terminal (ROS1):
 
-	```
-	source /root/catkin_ws/devel/setup.bash #Source Noetic
-	roscore
+	```bash
+	$ source /root/catkin_ws/devel/setup.bash #Source Noetic
+	$ roscore
 	```
 	
 - 2º Terminal (ROS1 + ROS2)
 
-	```
+	```bash
 	#Source humble
-	source /opt/ros/humble/setup.bash 
-	source /root/ros2_ws/install/setup.bash
+	$ source /opt/ros/humble/setup.bash 
+	$ source /root/ros2_ws/install/setup.bash
 	
 	#Source noetic
-	source /root/catkin_ws/devel/setup
+	$source /root/catkin_ws/devel/setup
 	
 	#Launch bridge
-	ros2 run ros1_bridge dynamic_bridge
+	$ ros2 run ros1_bridge dynamic_bridge
 	```
