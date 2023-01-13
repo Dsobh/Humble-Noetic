@@ -16,13 +16,13 @@ The images are installed as follows:
 
 	```
 	docker build -t <imageName>:<imageTag> .
-	``
+	```
 
 - Run docker image: 
 
 	```
 	docker run -it <imageName>:<imageTag> /bin/bash
-	``
+	```
 
 ## Execute ros1_bridge
 
@@ -45,4 +45,4 @@ The images are installed as follows:
 	
 	#Launch bridge
 	ros2 run ros1_bridge dynamic_bridge
-	``
+	```
