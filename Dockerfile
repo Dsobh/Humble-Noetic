@@ -2,8 +2,8 @@ FROM ubuntu:latest
 ARG DEBIAN_FRONTEND=noninteractive
 
 #Copiamos el script para descargarse noetic y descomprimirlo
-COPY ./files/cloneGit.sh /home/cloneGit.sh
-COPY ./files/noetic-desktop.rosinstall /home/noetic-desktop.rosinstall
+COPY ./src/install/cloneGit.sh /home/cloneGit.sh
+COPY ./src/others/noetic-desktop.rosinstall /home/noetic-desktop.rosinstall
 
 RUN apt update && apt upgrade
 RUN apt-get install -y wget
@@ -47,7 +47,7 @@ RUN wget  https://github.com/ros/std_msgs/archive/refs/heads/kinetic-devel.zip -
 RUN unzip /root/catkin_ws/src/kinetic-devel.zip -d /root/catkin_ws/src/
 RUN rm /root/catkin_ws/src/kinetic-devel.zip
 
-COPY ./files/rosconsole_log4cxx.cpp /root/catkin_ws/src/rosconsole-release-release-noetic-rosconsole-1.14.3-1/src/rosconsole/impl/rosconsole_log4cxx.cpp
+COPY ./src/others/rosconsole_log4cxx.cpp /root/catkin_ws/src/rosconsole-release-release-noetic-rosconsole-1.14.3-1/src/rosconsole/impl/rosconsole_log4cxx.cpp
 	
 WORKDIR /root/catkin_ws/src
 RUN git clone https://github.com/ros/geometry2.git
