@@ -6,9 +6,19 @@ The images are installed as follows:
 
 - Ros Humble is installed from package.
 - Ros Noetic is installed from source.
-- */files/noetic-desktop.rosinstall* contains the packages needed for noetic installation
-- */files/cloneGit.sh* is a script that download and unzip all of these packages.
-- *rosconsole_log4cxx.cpp* is a modification of the source code of log4cxx to make it functional in ubuntu 22.
+
+**Content**:
+
+- */src/others/noetic-desktop.rosinstall* contains the packages needed for noetic installation
+- */src/others/rosconsole_log4cxx.cpp* is a modification of the source code of log4cxx to make it functional in ubuntu 22.
+
+- */src/install/system-utils.sh* contains installations of utilities for ubuntu 22
+- */src/install/ros-packages.sh* contains installation of packages needed for ros
+- */src/install/cloneGit.sh* is a script that download and unzip all of these packages.
+- */src/install/ros1.sh* contains the installation of ros1 (noetic)
+- */src/install/ros2.sh* contains the installation of ros2 (humble)
+- */src/install/bridges-install.sh* contains the installation of ros1_bridges (https://github.com/Dsobh/ros1_bridge)
+
 
 ## Instructions
 
@@ -44,5 +54,5 @@ The images are installed as follows:
 	$source /root/catkin_ws/devel/setup
 	
 	#Launch bridge
-	$ ros2 run ros1_bridge dynamic_bridge
+	$ ros2 run ros1_bridge <bridge_name>
 	```
