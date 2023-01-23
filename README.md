@@ -19,6 +19,13 @@ The images are installed as follows:
 - */src/install/ros2.sh* contains the installation of ros2 (humble)
 - */src/install/bridges-install.sh* contains the installation of ros1_bridges (https://github.com/Dsobh/ros1_bridge)
 
+**List of Bridges**
+
+- *simple_bridge_1_to_2_tf*
+- *simple_bridge_1_to_2_scan*
+- *simple_bridge_1_to_2_odom*
+- *simple_bridge_1_to_2_image*
+- *simple_bridge_1_to_2_twist*
 
 ## Instructions
 
@@ -34,7 +41,7 @@ The images are installed as follows:
 	$ docker run -it <imageName>:<imageTag> /bin/bash
 	```
 
-## Execute ros1_bridge
+### Execute ros1_bridge
 
 - 1º Terminal (ROS1):
 
