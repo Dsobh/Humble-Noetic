@@ -1,11 +1,17 @@
 ---
-ROS_MASTER_URI: http://10.68.0.1
+ROS_MASTER_URI: 10.68.0.1
 ROS_IP: 10.06.0.129
 
 bridges:
-  - bridge1:
-    - msg_type: /msg/Twist
-    - topic_name: /mobile_base_controller/cmd_vel
-  - bridge2:
-    - msg_type: /geometry_msgs/msg/odom
-    - topic_name: /mobile_base_controller/odom
+  - msg_type: twist
+    topic_name: /mobile_base_controller/cmd_vel
+  - msg_type: odom
+    topic_name: /mobile_base_controller/odom
+  - msg_type: tf
+    topic_name: /tf
+  - msg_type: image_raw
+    topic_name: /xtion/rgb/image_raw
+  - msg_type: scan
+    topic_name: /scan
+  - msg_type: imu
+    topic_name: /imu
