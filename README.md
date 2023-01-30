@@ -40,12 +40,14 @@ The images are installed as follows:
 	```bash
 	$ docker build -t <imageName>:<imageTag> .
 	```
-- Is also possible to pull the docker image from docker hub: https://hub.docker.com/repository/docker/dsobh/ros4ubuntu22/general
+- Is also possible to pull the docker image from docker hub: https://hub.docker.com/layers/dsobh/ros4ubuntu22/latest/images/sha256-5c2c280689caef8ecd7f5bab52004bbff86dfeca440577b6fc5d22610cdc7cd6?context=repo
 
-- Run docker image: 
+- Run docker image:
+
+We need to keep in mind a few things when launching the container. First of all is setting environment variables (ROS_MASTER_URI and ROS_IP) with the *--env* flag. Secondly we will use the *--network* flag to start the container as host.
 
 	```bash
-	$ docker run -it <imageName>:<imageTag> /bin/bash
+	$ docker run --rm --env ROS_MASTER_URI='http://ip:port' --env ROS_IP='ip' --network host -it image:tag /bin/bash
 	```
 
 ### Execute ros1_bridge
