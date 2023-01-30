@@ -51,6 +51,7 @@ We need to keep in mind a few things when launching the container. First of all 
 	```
 
 ### Execute ros1_bridge
+The image automatically starts the bridges, but in case the user wants to start it manually :
 
 - 1º Terminal (ROS1):
 
@@ -75,15 +76,8 @@ We need to keep in mind a few things when launching the container. First of all 
 	
 ### Bridge configuration
 
-This image uses one yaml file to set which bridges to display. This file is named conf.yaml and it contains information about the Ip. This information is used as follows:
-
-```
-$ exports ROS_MASTER_URI=http://IP_number:11311
-$ exports ROS_URI=Ip_number
-
-```
-
-The roslaunch file used will create the necessary nodes from conf.yaml
+This image uses one yaml file to set which bridges to display. This file is named conf.yaml and it contains information about the bridges.
+The roslaunch file used will create the necessary nodes from this conf.yaml
 An example of this configuration file is show below:
 
 ```
