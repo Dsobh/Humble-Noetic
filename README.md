@@ -45,9 +45,9 @@ The images are installed as follows:
 - Run docker image:
 
 We need to keep in mind a few things when launching the container. First of all is setting environment variables (ROS_MASTER_URI and ROS_IP) with the *--env* flag. Secondly we will use the *--network* flag to start the container as host.
-
+We also need to pass the conf.yaml file to the docker when we run it.
 	```bash
-	$ docker run --rm --env ROS_MASTER_URI='http://ip:port' --env ROS_IP='ip' --network host -it image:tag /bin/bash
+	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.129' --network host -v /conf.yaml:/root/conf.yaml -it rep:tag /bin/bash
 	```
 
 ### Execute ros1_bridge
