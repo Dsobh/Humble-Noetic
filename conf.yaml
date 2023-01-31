@@ -9,9 +9,11 @@ bridges:
     topic_name: /mobile_base_controller/odom
   - msg_type: tf
     topic_name: /tf
-  - msg_type: image_raw
-    topic_name: /xtion/rgb/image_raw
+  - msg_type: image
+    topic_name: /xtion/depth/image_raw
   - msg_type: scan
     topic_name: /scan
   - msg_type: imu
     topic_name: /imu
+  - msg_type: image
+    topic_name: /xtion/rgb/image_raw
