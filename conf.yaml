@@ -1,7 +1,4 @@
 ---
-ROS_MASTER_URI: 10.68.0.1
-ROS_IP: 10.06.0.129
-
 bridges:
   - msg_type: twist
     topic_name: /mobile_base_controller/cmd_vel
