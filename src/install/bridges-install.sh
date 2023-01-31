@@ -9,7 +9,3 @@ source /opt/ros/humble/setup.bash
 source /root/catkin_ws/devel/setup.bash
 
 colcon build
-
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-echo "source /root/ros2_ws/install/setup.bash" >> ~/.bashrc
-echo "source /root/catkin_ws/devel/setup.bash" >> ~/.bashrc
