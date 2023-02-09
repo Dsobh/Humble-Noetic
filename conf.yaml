@@ -14,3 +14,7 @@ bridges:
     topic_name: /imu
   - msg_type: image
     topic_name: /xtion/rgb/image_raw
+  - msg_type: range
+    topic_name: /sonar_torso
+  - msg_type: range
+    topic_name: /sonar_base
