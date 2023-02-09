@@ -28,9 +28,10 @@ The images are installed as follows:
 | simple_bridge_1_to_2_tf | /tf |
 | simple_bridge_1_to_2_scan | /scan |
 | simple_bridge_1_to_2_odom | /mobile_base_controller/odom |
-| simple_bridge_1_to_2_image | /xtion/rgb/image_raw |
+| simple_bridge_1_to_2_image | /xtion/rgb/image_raw & /xtion/depth/image_raw |
 | simple_bridge_2_to_1_twist | /mobile_base_controller/cmd_vel |
 | simple_bridge_1_to_2_imu | /base_imu |
+| simple_bridge_1_to_2_sonar | /sonar_torso & /sonar_base |
 
 
 ## Instructions
