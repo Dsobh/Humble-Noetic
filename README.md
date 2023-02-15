@@ -23,24 +23,26 @@ The images are installed as follows:
 
 **List of Bridges**
 
-| Bridge | Topic |
-| ------ | ----- |
-| simple_bridge_1_to_2_tf | /tf |
-| simple_bridge_1_to_2_scan | /scan |
-| simple_bridge_1_to_2_odom | /mobile_base_controller/odom |
-| simple_bridge_1_to_2_image | /xtion/rgb/image_raw & /xtion/depth/image_raw |
-| simple_bridge_2_to_1_twist | /mobile_base_controller/cmd_vel |
-| simple_bridge_1_to_2_imu | /base_imu |
-| simple_bridge_1_to_2_sonar | /sonar_torso & /sonar_base |
+| Bridge | Topic | Msg Type |
+| ------ | ----- | -------- |
+| simple_bridge_1_to_2_tf | /tf | tf |
+| simple_bridge_1_to_2_scan | /scan | scan | 
+| simple_bridge_1_to_2_odom | /mobile_base_controller/odom | odom |
+| simple_bridge_1_to_2_image | /xtion/rgb/image_raw & /xtion/depth/image_raw | image |
+| simple_bridge_2_to_1_twist | /mobile_base_controller/cmd_vel | twist |
+| simple_bridge_1_to_2_imu | /base_imu | imu |
+| simple_bridge_1_to_2_sonar | /sonar_base | range |
+| simple_bridge_1_to_2_compressed | /xtion/rgb/image_raw/compressed & /xtion/depth/image_raw/compressed | compressed |
+| simple_bridge_1_to_2_point_cloud | /xtion/depth/points | point_cloud2 |
 
 
 ## Instructions
 
 - Build the docker image. In folder root:
 
-	```bash
+```bash
 	$ docker build -t <imageName>:<imageTag> .
-	```
+```
 - Is also possible to pull the docker image from docker hub: https://hub.docker.com/layers/dsobh/ros4ubuntu22/latest/images/sha256-5c2c280689caef8ecd7f5bab52004bbff86dfeca440577b6fc5d22610cdc7cd6?context=repo
 
 - Run docker image:
@@ -48,29 +50,29 @@ The images are installed as follows:
 We need to keep in mind a few things when launching the container. First of all is setting environment variables (ROS_MASTER_URI and ROS_IP) with the *--env* flag. Secondly we will use the *--network* flag to start the container as host.
 We also need to pass the conf.yaml file to the docker when we run it.
 
-	```bash
+```bash
 	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.129' --network host -v /<AbsolutePath>/conf.yaml:/root/conf.yaml -it rep:tag
-	```
+```
 	
 If the previous command dont launch the ros bridges we can force the docker to start using the entrypoint script:
 
 ```bash
 	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.129' --network host -v /<AbsolutePath>/conf.yaml:/root/conf.yaml -it rep:tag /root/docker-entrypoint.sh
-	```
+```
 
 ### Execute ros1_bridge
 The image automatically starts the bridges, but in case the user wants to start it manually :
 
 - 1º Terminal (ROS1):
 
-	```bash
+```bash
 	$ source /root/catkin_ws/devel/setup.bash #Source Noetic
 	$ roscore
-	```
+```
 	
 - 2º Terminal (ROS1 + ROS2). *In most cases, this will not be necessary, since docker starts with the execution of a roslaunch file that deploys the bridges.*
 
-	```bash
+```bash
 	#Source humble
 	$ source /opt/ros/humble/setup.bash 
 	$ source /root/ros2_ws/install/setup.bash
@@ -80,7 +82,7 @@ The image automatically starts the bridges, but in case the user wants to start 
 	
 	#Launch bridge 
 	$ ros2 run ros1_bridge <bridge_name> --ros-args -p topic_name:=<topic_name>
-	```
+```
 	
 ### Bridge configuration
 
@@ -88,7 +90,7 @@ This image uses one yaml file to set which bridges to display. This file is name
 The roslaunch file used will create the necessary nodes from this conf.yaml
 An example of this configuration file is show below:
 
-```
+```bash
 bridges:
   - bridge1:
     - msg_type: /msg/Twist
