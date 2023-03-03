@@ -1,14 +1,36 @@
 # Humble-Noetic_Docker
 
+Table of Contents
+=================
+  * [Desciption](#description)
+    * [Content](#content)
+    * [Bridges](#bridges)
+  * [Instructions](#instructions)
+    * [Building dockerfile](#build-dockerfile)
+    * [Run Docker](#run-docker)  
+    * [Execute ros1_bridge](#execute-ros1_bridge)
+    * [Bridge configuration](#bridge-configuration)
+  * [Tiago Setup](#tiago-setup) 
 
-**Humble-Noetic_Docker** is a dockerfile that allows execute Ros1 (Noetic) with Ros2 (Humble) over a Ubuntu 22 image.
-The images are installed as follows:
 
-- Ros Humble is installed from package.
-- Ros Noetic is installed from source.
+  
+## Description 
+This repository contains a a dockerfile that allows execute Ros1 (Noetic) with Ros2 (Humble) over a Ubuntu 22 image. The dockerfile image includes a version of the [`ros1_bridges`](#https://github.com/Dsobh/ros1_bridge) package, that contains several [bridges](#bridges).
 
-**Content**:
+The dockerfile installs two version of ROS:
+- `Ros Humble` is installed from package.
+- `Ros Noetic` is installed from source.
 
+Is also possible to find the latest docker image from docker hub: [`dsobh/ros4ubuntu22`](#https://hub.docker.com/layers/dsobh/ros4ubuntu22/latest/images/sha256-803d6297a9821ec4ad42c764179fc7e0e0bdb18fb59f0b956a865bd7f535f2eb?context=repo)
+
+We can pull the image as follows:
+```
+docker push dsobh/ros4ubuntu22:latest
+```
+
+### Content
+
+In order to build the final image, this dockerfile includes the following files:
 - */src/others/noetic-desktop.rosinstall* contains the packages needed for noetic installation
 - */src/others/rosconsole_log4cxx.cpp* is a modification of the source code of log4cxx to make it functional in ubuntu 22.
 - */src/others/docker-entrypoint.sh* is the entrypoint for the docker that is responsible for making sources for Ros1 and Ros2 and launch the launch.py file.
@@ -21,7 +43,9 @@ The images are installed as follows:
 - */src/install/bridges-install.sh* contains the installation of ros1_bridges (https://github.com/Dsobh/ros1_bridge)
 
 
-**List of Bridges**
+### Bridges
+
+Listed below are the different bridges that are included in the image along with the topic and type of message they use.
 
 | Bridge | Topic | Msg Type |
 | ------ | ----- | -------- |
@@ -38,26 +62,32 @@ The images are installed as follows:
 
 ## Instructions
 
+### Build Dockerfile
+
 - Build the docker image. In folder root:
 
 ```bash
 	$ docker build -t <imageName>:<imageTag> .
 ```
-- Is also possible to pull the docker image from docker hub: https://hub.docker.com/layers/dsobh/ros4ubuntu22/latest/images/sha256-5c2c280689caef8ecd7f5bab52004bbff86dfeca440577b6fc5d22610cdc7cd6?context=repo
 
-- Run docker image:
+### Run Docker
 
-We need to keep in mind a few things when launching the container. First of all is setting environment variables (ROS_MASTER_URI and ROS_IP) with the *--env* flag. Secondly we will use the *--network* flag to start the container as host.
-We also need to pass the conf.yaml file to the docker when we run it.
+This docker is designed to execute inside of a robot like TiaGo. The docker start with a linux service that setup the differents bridges.
+However, is possible to launch the docker manually as follows.
+
+#### Run docker image:
+
+We need to keep in mind a few things when launching the container. First of all is setting environment variables (ROS_MASTER_URI and ROS_IP) with the **--env** flag. Secondly we will use the **--network** flag to start the container as host.
+We also need to pass the **conf.yaml** file to the docker when we run it.
 
 ```bash
 	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.129' --network host -v /<AbsolutePath>/conf.yaml:/root/conf.yaml -it rep:tag
 ```
 	
-If the previous command dont launch the ros bridges we can force the docker to start using the entrypoint script:
+We can start the docker without the entrypoint wuth the next command:
 
 ```bash
-	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.129' --network host -v /<AbsolutePath>/conf.yaml:/root/conf.yaml -it rep:tag /root/docker-entrypoint.sh
+	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.129' --network host -v /<AbsolutePath>/conf.yaml:/root/conf.yaml -it rep:tag /bin/bash
 ```
 
 ### Execute ros1_bridge
@@ -101,4 +131,6 @@ bridges:
     
 ```
 
-	
+### TiaGo SetUp
+
+Documentación del servicio
