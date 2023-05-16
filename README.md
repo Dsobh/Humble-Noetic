@@ -134,7 +134,7 @@ bridges:
 
 ### TiaGo SetUp
 
-To use the bridges package as a service in TiaGo the file `ros1_bridges.service` can be used. The file must be moved to `etc\systemd\system\ros1_bridges.service` within TiaGo.
+To use the bridges package as a service in TiaGo the file `ros1_bridges.service` can be used. The file must be moved to `/etc/systemd/system/ros1_bridges.service` within TiaGo.
 
 In the other hand, `conf.yaml` file should be stored in the overlay:
 
