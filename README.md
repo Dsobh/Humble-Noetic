@@ -34,6 +34,7 @@ In order to build the final image, this dockerfile includes the following files:
 - */src/others/noetic-desktop.rosinstall* contains the packages needed for noetic installation
 - */src/others/rosconsole_log4cxx.cpp* is a modification of the source code of log4cxx to make it functional in ubuntu 22.
 - */src/others/docker-entrypoint.sh* is the entrypoint for the docker that is responsible for making sources for Ros1 and Ros2 and launch the launch.py file.
+- */src/others/ros1_bridges.service
 
 - */src/install/system-utils.sh* contains installations of utilities for ubuntu 22
 - */src/install/ros-packages.sh* contains installation of packages needed for ros
@@ -133,4 +134,11 @@ bridges:
 
 ### TiaGo SetUp
 
-Documentación del servicio
+To use the bridges package as a service in TiaGo the file `ros1_bridges.service` can be used. The file must be moved to `etc\systemd\system\ros1_bridges.service` within TiaGo.
+
+In the other hand, `conf.yaml` file should be stored in the overlay:
+
+```
+sudo overlayroot_chroot
+```
+

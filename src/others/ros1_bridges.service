@@ -1,0 +1,16 @@
+[Unit]
+Description=ROS 1 Bridges
+After=docker.service roscore.service
+Wants=network-online.target docker.socket
+Requires=docker.socket
+
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.1' --network host -v /conf.yaml:/root/conf.yaml dsobh/ros4ubuntu22:latest
+# ExecStart=/usr/bin/docker start -a ros1_bridges
+# ExecStop=/usr/bin/docker stop -t 10 ros1_bridges
+
+
+[Install]
+WantedBy=multi-user.target
