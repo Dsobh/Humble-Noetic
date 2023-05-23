@@ -20,3 +20,5 @@ bridges:
     topic_name: /sonar_base
   - msg_type: point_cloud2
     topic_name: /xtion/depth_registered/points
+  - msg_type: camera_info
+    topic_name: /xtion/rgb/camera_info

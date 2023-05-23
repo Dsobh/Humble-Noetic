@@ -59,6 +59,7 @@ Listed below are the different bridges that are included in the image along with
 | simple_bridge_1_to_2_sonar | /sonar_base | range |
 | simple_bridge_1_to_2_compressed | /xtion/rgb/image_raw/compressed & /xtion/depth/image_raw/compressed | compressed |
 | simple_bridge_1_to_2_point_cloud | /xtion/depth/points | point_cloud2 |
+| simple_bridge_1_to_2_camera_info | /xtion/rgb/camera_info | camera_info |
 
 
 ## Instructions
@@ -82,13 +83,13 @@ We need to keep in mind a few things when launching the container. First of all 
 We also need to pass the **conf.yaml** file to the docker when we run it.
 
 ```bash
-	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.129' --network host -v /<AbsolutePath>/conf.yaml:/root/conf.yaml -it rep:tag
+	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.129' --env RMW_IMPLEMENTATION=rmw_cyclonedds_cpp --network host -v /<AbsolutePath>/conf.yaml:/root/conf.yaml -it rep:tag
 ```
 	
-We can start the docker without the entrypoint wuth the next command:
+We can start the docker without the entrypoint with the next command:
 
 ```bash
-	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.131' --env RMW_IMPLEMENTATION=rmw_cyclonedds_cpp --network host -v /home/cataplau/Downloads/conf.yaml:/root/conf.yaml -it --entrypoint bash dsobh/ros4ubuntu22:latest
+	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.131' --env RMW_IMPLEMENTATION=rmw_cyclonedds_cpp --network host -v /conf.yaml:/root/conf.yaml -it --entrypoint bash dsobh/ros4ubuntu22:latest
 ```
 
 ### Execute ros1_bridge
