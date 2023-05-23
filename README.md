@@ -88,7 +88,7 @@ We also need to pass the **conf.yaml** file to the docker when we run it.
 We can start the docker without the entrypoint wuth the next command:
 
 ```bash
-	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.129' --network host -v /<AbsolutePath>/conf.yaml:/root/conf.yaml -it rep:tag /bin/bash
+	$ docker run --rm --env ROS_MASTER_URI='http://10.68.0.1:11311' --env ROS_IP='10.68.0.131' --env RMW_IMPLEMENTATION=rmw_cyclonedds_cpp --network host -v /home/cataplau/Downloads/conf.yaml:/root/conf.yaml -it --entrypoint bash dsobh/ros4ubuntu22:latest
 ```
 
 ### Execute ros1_bridge
