@@ -14,6 +14,10 @@ mv /home/rosconsole_log4cxx.cpp /root/catkin_ws/src/rosconsole-release-release-n
 cd /root/catkin_ws/src
 git clone https://github.com/ros/geometry2.git
 
+git clone https://github.com/ros-controls/control_msgs.git
+cd control_msgs/
+git checkout kinetic-devel
+
 cd /root/catkin_ws
 
 sudo apt update -y

@@ -22,3 +22,6 @@ bridges:
     topic_name: /xtion/depth_registered/points
   - msg_type: camera_info
     topic_name: /xtion/rgb/camera_info
+  - msg_type: moveit
+    topic_name: <<topic_name>>
+  
