@@ -23,5 +23,4 @@ bridges:
   - msg_type: camera_info
     topic_name: /xtion/rgb/camera_info
   - msg_type: moveit
-    topic_name: <<topic_name>>
-  
+    topic_name: /arm_controller/follow_joint_trajectory

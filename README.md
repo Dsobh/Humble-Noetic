@@ -60,7 +60,7 @@ Listed below are the different bridges that are included in the image along with
 | simple_bridge_1_to_2_compressed | /xtion/rgb/image_raw/compressed & /xtion/depth/image_raw/compressed | compressed |
 | simple_bridge_1_to_2_point_cloud | /xtion/depth/points | point_cloud2 |
 | simple_bridge_1_to_2_camera_info | /xtion/rgb/camera_info | camera_info |
-| moveit_2_to_1 | <<topic_name>> | moveit |
+| moveit_2_to_1 | /arm_controller/follow_joint_trajectory | moveit |
 
 
 ## Instructions
